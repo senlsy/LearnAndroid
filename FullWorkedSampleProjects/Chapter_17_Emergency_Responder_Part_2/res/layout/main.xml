@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/labelRequestList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/querylistprompt" />
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:padding="5dp" >
+
+        <CheckBox
+            android:id="@+id/checkboxSendLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="是否包含位置信息" />
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OK" />
+
+        <Button
+            android:id="@+id/notOkButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bad" />
+
+        <Button
+            android:id="@+id/autoResponder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自动回复" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/myListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/buttonLayout"
+        android:layout_below="@id/labelRequestList" />
+
+</RelativeLayout>

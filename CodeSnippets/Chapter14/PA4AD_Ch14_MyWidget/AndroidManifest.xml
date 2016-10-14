@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.paad.PA4AD_Ch14_MyWidget"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
+            android:name="com.paad.PA4AD_Ch14_MyWidget.MainActivity"
+            android:label="widget" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- SimpleWidget的配置Activity节点 -->
+        <activity
+            android:name="com.paad.simplewidget.WidgetConfiguration"
+            android:label="SimpleWidget的配置Activity" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <!-- SimpleWidget的节点 -->
+        <receiver
+            android:name="com.paad.simplewidget.SimpleWidget"
+            android:label="SimpleWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/simplewidget_info" />
+        </receiver>
+        <!-- AppWidget的节点 -->
+        <receiver
+            android:name="com.paad.simplewidget.AppWidget"
+            android:label="MyAppWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.paad.mywidget.FORCE_WIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_info" />
+        </receiver>
+
+        <!-- StackWidget节点 -->
+        <receiver
+            android:name="com.paad.stackwidget.StackWidget"
+            android:label="StackWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/stackwidget_info" />
+        </receiver>
+
+        <service
+            android:name="com.paad.stackwidget.StackRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" >
+        </service>
+
+        <!-- MediaStackWidget节点 -->
+        <receiver
+            android:name="com.paad.widget4provider.MediaStackWidget"
+            android:label="MediaWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mediawidget_info" />
+        </receiver>
+
+        <service
+            android:name="com.paad.widget4provider.MediaRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" >
+        </service>
+    </application>
+
+</manifest>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 含actionbar的主题 -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBar4one</item>
+    </style>
+
+    <style name="ActionBar4one" parent="@android:style/Widget.Holo.ActionBar">
+        <!-- 在样式里面去掉acionbar的应用图标和标题useLogo|showHome|showTitle -->
+        <item name="android:displayOptions">showHome|showTitle</item>
+    </style>
+
+</resources>

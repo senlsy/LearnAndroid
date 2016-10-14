@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="说明描述" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="PREF_CHECK_BOX"
+            android:summary="用这个控件的key作为DefalutPreferncede key值   来保存复选框的状态"
+            android:title="复选框选项" />
+    </PreferenceCategory>
+
+    <PreferenceScreen
+        android:icon="@drawable/ic_launcher"
+        android:title="额外的PreferenceScreen" >
+        <PreferenceScreen>
+            ...包含的ui控件
+        </PreferenceScreen>
+    </PreferenceScreen>
+
+</PreferenceScreen>

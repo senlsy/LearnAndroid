@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.paad.compass.CompassView
+        android:id="@+id/compassView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="指南针角度值bearing"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/bearing1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  +  "
+            android:textColor="#3f3f3f"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/bearing2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="  -  "
+            android:textColor="#3f3f3f"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="倾斜值pitch"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/pitch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  +  "
+            android:textColor="#3f3f3f"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/pitch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="  -  "
+            android:textColor="#3f3f3f"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="滚动值roll"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/roll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  +  "
+            android:textColor="#3f3f3f"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/roll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="  -  "
+            android:textColor="#3f3f3f"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

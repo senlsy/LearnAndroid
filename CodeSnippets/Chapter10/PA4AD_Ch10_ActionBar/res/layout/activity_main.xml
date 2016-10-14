@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM_UI_FLAG_VISIBLE" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="INVISIBLE" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM_UI_FLAG_FULLSCREEN" />
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION" />
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM_UI_LAYOUT_FLAGS" />
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM_UI_FLAG_HIDE_NAVIGATION" />
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM_UI_FLAG_LOW_PROFILE" />
+    </LinearLayout>
+
+</RelativeLayout>

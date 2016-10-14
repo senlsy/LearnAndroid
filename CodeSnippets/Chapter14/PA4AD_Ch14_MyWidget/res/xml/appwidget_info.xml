@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Listing 14-2: App Widget Provider definition -->
+<!-- Listing 14-12: Setting the App Widget minimum update rate -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/appwidget_layout"
+    android:label="appwidget"
+    android:minHeight="110dp"
+    android:minWidth="40dp"
+    android:previewImage="@drawable/widget_preview"
+    android:resizeMode="none"
+    android:updatePeriodMillis="3600000" />
+

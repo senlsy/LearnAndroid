@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.paad.earthquake"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light" >
+
+        <!-- 应用程序默认搜索Activity -->
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value="com.paad.earthquake.search.EarthquakeSearchResults" />
+        <!-- 用户首选项配置Activity -->
+        <activity
+            android:name="com.paad.earthquake.preferences.PreferencesActivity"
+            android:label="Earthquake Preferences" >
+        </activity>
+        <activity
+            android:name="com.paad.earthquake.preferences.FragmentPreferencesroid"
+            android:label="Earthquake FragmentPreferencesroid" >
+        </activity>
+        <!-- 定义的搜索Activity -->
+        <activity
+            android:name="com.paad.earthquake.search.EarthquakeSearchResults"
+            android:label="Earthquake Search"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <provider
+            android:name="com.paad.earthquake.provider.EarthquakeProvider"
+            android:authorities="com.paad.earthquakeprovider" />
+
+        <activity
+            android:name=".Earthquake"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/mediawidget_layout"
+    android:label="MediaWidget"
+    android:minHeight="146dp"
+    android:minWidth="146dp"
+    android:previewImage="@drawable/widget_preview"
+    android:resizeMode="none"
+    android:updatePeriodMillis="3600000" />

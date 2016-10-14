@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始录制" />
+
+        <Button
+            android:id="@+id/buttonStabilize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图像稳定" />
+
+        <Button
+            android:id="@+id/buttonstop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="体制录制" />
+
+        <Button
+            android:id="@+id/buttonScanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="媒体库扫描" />
+    </LinearLayout>
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linearLayout1" />
+
+</RelativeLayout>

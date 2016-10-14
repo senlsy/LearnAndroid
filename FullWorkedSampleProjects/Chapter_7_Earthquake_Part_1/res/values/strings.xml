@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Earthquake</string>
+  <string name="quake_feed">
+    http://earthquake.usgs.gov/eqcenter/catalogs/1day-M2.5.xml
+  </string>
+  <!-- <string name="menu_update">Refresh Earthquakes</string> -->
+  <string name="auto_update_prompt">自动更新？</string>
+  <string name="update_freq_prompt">更新频率</string>
+  <string name="min_quake_mag_prompt">最小地震等级</string>
+  <string name="save">确认保存</string>
+  <string name="cancle">取消保存</string>
+  <string name="menu_preferences">首选项设置</string>
+</resources>

@@ -1,0 +1,8 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <header
+        android:fragment="com.paad.datatransfer.MyPreferenceFragment"
+        android:summary="Description of these preferences"
+        android:title="My Preferences" />
+
+</preference-headers>
