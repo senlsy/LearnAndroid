@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application' //Android App编译插件
+apply plugin: 'com.neenbedankt.android-apt'//dagger2编译插件
+
+apply from: "$project.projectDir/build-config/quality/quality.gradle"//代码规范及质量检测
+apply from: "$project.projectDir/build-config/flavors/flavors.gradle"//APP 构建类型及渠道配置
+
+android {
+
+    compileSdkVersion 23
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "com.quickartifact"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+}
+
+dependencies {
+    def SUPPORT_VERSION = '23.3.0'
+    ///////////////////////////////
+    //本地
+    //////////////////////////////
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    ///////////////////////
+    //Android
+    //////////////////////
+    compile 'com.android.support:support-v4:' + SUPPORT_VERSION
+    compile 'com.android.support:appcompat-v7:' + SUPPORT_VERSION
+    compile 'com.android.support:multidex:1.0.0'
+
+    ///////////////////////
+    //第三方
+    /////////////////////
+
+    //dagger2
+    apt "com.google.dagger:dagger-compiler:2.0.2"
+    compile "com.google.dagger:dagger:2.0.2"
+    compile "org.glassfish:javax.annotation:10.0-b28"
+    //squareup
+    compile 'io.reactivex:rxandroid:1.2.1'//rajava
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'//Retrofit网络请求框架，基于OkHttp动态代理模式
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'//OkHttp
+    compile 'com.squareup.picasso:picasso:2.5.2'//网络图片加载库
+    compile 'com.orhanobut:logger:1.15'//Log日志输出
+    compile 'com.alibaba:fastjson:1.1.54.android'//阿里的json序列化反序列化库
+    //butterknife View控件依赖注入
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //leakcanary检查内存泄露
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'//手势回退
+    compile 'com.umeng.analytics:analytics:latest.integration'//友盟统计
+
+    ///////////////////////////////
+    //测试
+    //////////////////////////////
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.10.19"//验证viod方法
+    testCompile 'com.github.fabioCollini:DaggerMock:0.6.2' //DaggerRule方便测试时依赖注入
+    //如果你需要在Instrumentation、Espresso、UiAutomator里面使用的话，依赖下面
+    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.6.2'
+    testCompile 'org.robolectric:robolectric:3.0'//模拟android运行环境
+    testCompile 'com.squareup.okhttp3:mockwebserver:3.4.1'//OKhttp模拟服务端
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'//内存泄露
+}

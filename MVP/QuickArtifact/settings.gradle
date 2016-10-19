@@ -1,0 +1,34 @@
+include ':app'
+initEnvironment()
+
+def initEnvironment() {
+    println "hook setting.gradle start ....."
+
+    /*  Gradle工作包含三个阶段 ：
+      1、初始化阶段：对multi-project build而言，就是执行settings.gradle
+      2、Configration阶段：解析每个project中的build.gradle，建立一个有向图来描述Task之间的依赖关系。
+      3、执行task阶段：执行gradle编译插件所定义的task
+
+      根据Gradle、Project生命周期的介绍，对象创建顺序：gradle对象-->setting对象-->porject对象
+      */
+
+
+    Properties properties = new Properties()
+    properties.load(new FileInputStream(file("$rootDir/local.properties")))
+
+    gradle.ext {
+        //指定keystore文件的位置
+        println releaseKeystore = "${project(":app").projectDir}/build-config/keystore/mark.jks"
+        println storePassword = properties.getProperty('keyStorePassword')
+        println keyAlias = properties.getProperty('keyAlias')
+        println keyPassword = properties.getProperty('keyPassword')
+    }
+
+    println "hook setting.gradle completes..."
+}
+
+
+
+
+
+

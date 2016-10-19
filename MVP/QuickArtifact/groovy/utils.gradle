@@ -1,0 +1,58 @@
+log("%s apply utils.gradle", project.getName())
+
+/**
+ * 加载属性文件
+ * @param filePath
+ * @return
+ */
+def loadProperties(filePath) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(file(filePath)))
+    return props
+}
+
+/**
+ * 根绝value值返回对应类型的字符串，无法识别默认返回String
+ * @param value
+ * @return
+ */
+def valueType(value) {
+    if (value.equalsIgnoreCase("true") || value.equalsIgnoreCase("false")) {
+        return "boolean"
+    } else if (value ==~ /-?[1-9]\d*/) {
+        return "int"
+    } else if (value ==~ /-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)/) {
+        return "double"
+    } else {
+        return "String"
+    }
+}
+
+/**
+ * 返回当前时间的日期格式yyyy-MM-dd
+ * @return
+ */
+def currentTimeNow() {
+    new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+/**
+ * 打印日志
+ * @param fromat
+ * @param objects
+ * @return
+ */
+def log(String fromat, Object... objects) {
+    if (objects == null) {
+        println fromat
+    } else {
+        println String.format(java.util.Locale.CHINA, fromat, objects)
+    }
+}
+
+ext {
+    loadProperties = this.&loadProperties
+    valueType = this.&valueType
+    currentTimeNow = this.&currentTimeNow
+    log = this.&log
+}

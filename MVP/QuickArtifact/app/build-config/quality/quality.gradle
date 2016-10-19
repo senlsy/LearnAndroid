@@ -1,0 +1,97 @@
+println("$project.name apply quality.gradle ")
+
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+// Add checkstyle, findbugs, pmd and lint to the check task.
+check.dependsOn 'checkstyle', 'findbugs', 'pmd', 'lint'
+
+def qualityConfigPath = "${project.projectDir}/build-config/quality"
+def reportsPath = "${project.buildDir}/reports"
+
+task checkstyle(type: Checkstyle) {
+    configFile file("$qualityConfigPath/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionsPath = file("$qualityConfigPath/checkstyle/suppressions.xml").absolutePath
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**',
+            'androidTest/**',
+            'test/**'
+    reports {
+        html.enabled = true
+        xml.enabled = false
+
+        xml {
+            destination "$reportsPath/checkstyle/checkstyle-result.xml"
+        }
+
+        html {
+            destination "$reportsPath/checkstyle/checkstyle-result.html"
+        }
+    }
+    classpath = files()
+}
+
+task findbugs(type: FindBugs, dependsOn: assembleDebug) {
+    ignoreFailures = false
+    effort = "max"
+    reportLevel = "high"
+    excludeFilter = new File("$qualityConfigPath/findbugs/findbugs-filter.xml")
+    classes = files("${project.rootDir}/app/build/intermediates/classes")
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**',
+            'androidTest/**',
+            'test/**'
+
+    reports {
+        html.enabled = true
+        xml.enabled = false
+        xml {
+            destination "$reportsPath/findbugs/findbugs.xml"
+        }
+        html {
+            destination "$reportsPath/findbugs/findbugs.html"
+        }
+    }
+
+    classpath = files()
+}
+
+task pmd(type: Pmd) {
+    ignoreFailures = false
+    ruleSetFiles = files("$qualityConfigPath/pmd/pmd-ruleset.xml")
+    ruleSets = []
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**',
+            'androidTest/**',
+            'test/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            destination "$reportsPath/pmd/pmd.xml"
+        }
+        html {
+            destination "$reportsPath/pmd/pmd.html"
+        }
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError true
+        xmlReport false
+        htmlReport true
+        lintConfig file("$qualityConfigPath/lint/lint.xml")
+        htmlOutput file("$reportsPath/lint/lint-result.html")
+        xmlOutput file("$reportsPath/lint/lint-result.xml")
+    }
+}
+
+

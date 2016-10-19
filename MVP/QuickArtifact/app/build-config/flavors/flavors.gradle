@@ -1,0 +1,110 @@
+apply plugin: 'com.android.application'
+apply from: "$rootDir/groovy/utils.gradle"
+
+log("%s apply flavors.gralde", project.getName())
+
+android {
+
+    lintOptions {
+        abortOnError false
+    }
+
+    signingConfigs {
+
+        debug {
+            storeFile file(gradle.releaseKeystore)
+            storePassword gradle.storePassword
+            keyAlias gradle.keyAlias
+            keyPassword gradle.keyPassword
+        }
+
+        release {
+            storeFile file(gradle.releaseKeystore)
+            storePassword gradle.storePassword
+            keyAlias gradle.keyAlias
+            keyPassword gradle.keyPassword
+        }
+
+    }
+
+
+    buildTypes {
+
+        debug {
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+
+            zipAlignEnabled true
+            shrinkResources true// 移除无用的resource文件
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+    }
+    /**
+     * 打不同的渠道包
+     * Build Type + Product Flavor = Build Variant
+     * 可以设置不同的SourceSet
+     *
+     */
+    productFlavors {
+        def flavorsPath = "${project.projectDir}/build-config/flavors"
+
+        //dev渠道版本
+        dev {
+            def props = loadProperties("$flavorsPath/$it.name/config.properties")
+            props.propertyNames().each { name ->
+                buildConfigField valueType(props.getProperty(name.toString())), name, props.getProperty(name.toString())
+            }
+
+            manifestPlaceholders = [
+                    UMENG_APPKEY : "57fb3218e0f55a2bb90012c5",
+                    UMENG_CHANNEL: name,
+
+            ]
+            buildApkFileName()
+        }
+
+        //local渠道版本
+        local {
+            def props = loadProperties("$flavorsPath/$it.name/config.properties")
+            props.propertyNames().each { name ->
+                buildConfigField valueType(props.getProperty(name.toString())), name, props.getProperty(name.toString())
+            }
+
+            manifestPlaceholders = [
+                    UMENG_APPKEY : "57fb3218e0f55a2bb90012c5",
+                    UMENG_CHANNEL: name,
+
+            ]
+            buildApkFileName()
+        }
+
+    }
+
+
+}
+
+/**
+ * 打正式包
+ */
+def buildApkFileName() {
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk') && 'release'.equalsIgnoreCase(variant.buildType.name)) {
+                def fileName = "${variant.flavorName}".toUpperCase();
+                def apkFile = new File(output.outputFile.getParent(), "APP_${fileName}_${variant.versionName}_${currentTimeNow()}.apk")
+                output.outputFile = apkFile
+            }
+
+        }
+    }
+}
+
