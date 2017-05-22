@@ -4,3 +4,11 @@ gen
 *.classpath
 *.project
 *.properties
+.idea
+.gradle
+build
+
+PA4AD_Ch05_Linkify.iml
+gradlew
+gradlew.bat
+gradle
