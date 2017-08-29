@@ -124,12 +124,16 @@ public class ExternalStorage extends Activity
         mLayout.addView(mExternalStoragePrivateFile.mRoot);
         TextView getDirView=(TextView)this.findViewById(R.id.getDir);
         getDirView.setText("目录：" + (getDir("SEn", Context.MODE_PRIVATE).getAbsolutePath()));
+        
         TextView getFilesDirView=(TextView)this.findViewById(R.id.getFilesDir);
         getFilesDirView.setText("目录：" + (getFilesDir().getAbsolutePath()));
+        
         TextView getCacheDirView=(TextView)this.findViewById(R.id.getCacheDir);
         getFilesDirView.setText("目录：" + (getCacheDir().getAbsolutePath()));
+        
         TextView getExternalCacheDirView=(TextView)this.findViewById(R.id.getExternalCacheDir);
         getFilesDirView.setText("目录：" + (getExternalCacheDir().getAbsolutePath()));
+        
         startWatchingExternalStorage();// 监听外部存储卡
     }
     
