@@ -94,11 +94,11 @@ public class DynamicProvidersActivity extends Activity implements
     
     private void registerListener() {
         unregisterAllListeners();
-        String bestProvider=locationManager.getBestProvider(criteria, false);// ·µ»ØÆôÓÃ»òÕßÎ´ÆôÓÃÖĞµÄÌá¹©ÖĞÕÒ
-        String bestAvailableProvider=locationManager.getBestProvider(criteria, true);// ÒÑÆôÓÃµÄÌá¹©Æ÷ÖĞÕÒ
-        textView.append("×îºÃ¶¨Î»·½Ê½=" + bestProvider + " / ×îºÃ¿ÉÓÃ¶¨Î»·½Ê½=" + bestAvailableProvider + "\n");
+        String bestProvider=locationManager.getBestProvider(criteria, false);// è¿”å›å¯ç”¨æˆ–è€…æœªå¯ç”¨ä¸­çš„æä¾›ä¸­æ‰¾
+        String bestAvailableProvider=locationManager.getBestProvider(criteria, true);// å·²å¯ç”¨çš„æä¾›å™¨ä¸­æ‰¾
+        textView.append("æœ€å¥½å®šä½æ–¹å¼=" + bestProvider + " / æœ€å¥½å¯ç”¨å®šä½æ–¹å¼=" + bestAvailableProvider + "\n");
         if(bestProvider == null)
-            textView.setText("¸ÃÉè±¸Ã»ÓĞGPS²¿¼ş");
+            textView.setText("è¯¥è®¾å¤‡æ²¡æœ‰GPSéƒ¨ä»¶");
         else if(bestAvailableProvider.equals(bestProvider))
             locationManager.requestLocationUpdates(bestAvailableProvider, 5000, 5, bestAvailableProviderListener);
         else{
@@ -111,14 +111,14 @@ public class DynamicProvidersActivity extends Activity implements
                     locationManager.requestLocationUpdates(provider, 0, 0, bestProviderListener);
             }
         }
-        locationManager.addGpsStatusListener(statusListener);// ĞÇÊı±ä»¯»Øµ÷
+        locationManager.addGpsStatusListener(statusListener);// æ˜Ÿæ•°å˜åŒ–å›è°ƒ
     }
     
-    // ÎÀĞÇ×´Ì¬¼àÌıÆ÷------------------------
+    // å«æ˜ŸçŠ¶æ€ç›‘å¬å™¨------------------------
     private final GpsStatus.Listener statusListener=new GpsStatus.Listener(){
         
-        public void onGpsStatusChanged(int event) { // GPS×´Ì¬±ä»¯Ê±µÄ»Øµ÷£¬ÈçÎÀĞÇÊı
-            GpsStatus status=locationManager.getGpsStatus(null); // È¡µ±Ç°×´Ì¬
+        public void onGpsStatusChanged(int event) { // GPSçŠ¶æ€å˜åŒ–æ—¶çš„å›è°ƒï¼Œå¦‚å«æ˜Ÿæ•°
+            GpsStatus status=locationManager.getGpsStatus(null); // å–å½“å‰çŠ¶æ€
             if(event == GpsStatus.GPS_EVENT_SATELLITE_STATUS){
                 Iterator<GpsSatellite> it=status.getSatellites().iterator();
                 numSatelliteList.clear();
@@ -130,9 +130,9 @@ public class DynamicProvidersActivity extends Activity implements
         }
     };
     
-    private List<GpsSatellite> numSatelliteList=new ArrayList<GpsSatellite>(); // ÎÀĞÇĞÅºÅ
+    private List<GpsSatellite> numSatelliteList=new ArrayList<GpsSatellite>(); // å«æ˜Ÿä¿¡å·
     
-    // È¡ÏûËùÓĞ¼àÌı-----------------------------
+    // å–æ¶ˆæ‰€æœ‰ç›‘å¬-----------------------------
     private void unregisterAllListeners() {
         locationManager.removeGpsStatusListener(statusListener);
         locationManager.removeUpdates(bestProviderListener);
@@ -145,18 +145,18 @@ public class DynamicProvidersActivity extends Activity implements
             t.setToNow();
             double latitude=location.getLatitude();
             double longitude=location.getLongitude();
-            double altitude=location.getAltitude(); // º£°Î
-            textView.setText("ËÑË÷ÎÀĞÇ¸öÊı£º" + numSatelliteList.size() + "\nÎ³¶È£º"
-                             + latitude + "\n¾­¶È£º" + longitude + "\nº£°Î£º" + altitude
-                             + "\nÊ±¼ä£º" + t.year + "Äê" + (t.month + 1) + "ÔÂ" + t.monthDay + "ÈÕ" + t.hour
+            double altitude=location.getAltitude(); // æµ·æ‹”
+            textView.setText("æœç´¢å«æ˜Ÿä¸ªæ•°ï¼š" + numSatelliteList.size() + "\nçº¬åº¦ï¼š"
+                             + latitude + "\nç»åº¦ï¼š" + longitude + "\næµ·æ‹”ï¼š" + altitude
+                             + "\næ—¶é—´ï¼š" + t.year + "å¹´" + (t.month + 1) + "æœˆ" + t.monthDay + "æ—¥" + t.hour
                              + ":" + t.minute + ":" + t.second);
         }
         else{
-            textView.setText("ÎŞ·¨»ñÈ¡µØÀíĞÅÏ¢");
+            textView.setText("æ— æ³•è·å–åœ°ç†ä¿¡æ¯");
         }
     }
     
-    // Ìá¹©Æ÷¶¨Î»¼àÌı-------------------------------------
+    // æä¾›å™¨å®šä½ç›‘å¬-------------------------------------
     private LocationListener bestProviderListener=new LocationListener(){
         
         public void onLocationChanged(Location location) {
@@ -200,7 +200,7 @@ public class DynamicProvidersActivity extends Activity implements
             unregisterAllListeners();
     }
     
-    // µ¥´Î¶¨Î»¼àÌıÆ÷
+    // å•æ¬¡å®šä½ç›‘å¬å™¨
     private LocationListener singleListener=new LocationListener(){
         
         @Override
