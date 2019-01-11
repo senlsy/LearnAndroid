@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\mark.lin\\Desktop\\LearnFile\\LearnAndroid\\CodeSnippets\\Chapter10\\PA4AD_Ch10_Notifications\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\mark.lin\\Desktop\\LearnFile\\LearnAndroid\\CodeSnippets\\Chapter10\\PA4AD_Ch10_Notifications\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\mark.lin\\Desktop\\Book\\android4\\CodeSnippets\\Chapter10\\PA4AD_Ch10_Notifications\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\mark.lin\\Desktop\\Book\\android4\\CodeSnippets\\Chapter10\\PA4AD_Ch10_Notifications\\res\\drawable-hdpi\\ic_launcher.png"
     }
